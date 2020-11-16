@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "v1IlhG+hw1V+co2HNeNi4+TRju73/8vhZ50AC5Ddj4y/lXksfEAMeFUesRFnDkolSp6QSHBAjFPa/g/NcLV6Sg==",
+  "dgSpecHash": "rG1GCUi9phDTijko5BAhej5ndeXSGtmP2jUDDunWS9pjq+vBmmHPp1Fak2RikymYqZgyr+9OU5yXKLngzdkDcQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Katylan\\source\\repos\\Lang\\Lang\\Lang.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/brin/Projects/LangGroup4/Lang/Lang.csproj",
+  "expectedPackageFiles": [
+    "/Users/brin/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
+  ],
   "logs": []
 }
