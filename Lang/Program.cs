@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Text;
+using System.Diagnostics;
 
 namespace Lang
 {
@@ -8,6 +8,7 @@ namespace Lang
     {
         static void Main(string[] args)
         {
+
             void printArray(int[] array, int length)
             {
                 if (length > 20)
@@ -48,25 +49,25 @@ namespace Lang
                 return divisor;
             }
 
+
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            Console.Clear();
+
             string nPath = Path.Combine(Environment.CurrentDirectory, "nFile.txt");
             string mPath = Path.Combine(Environment.CurrentDirectory, "mFile.txt");
             string nLine = "";
-            string[] mLine = new string[2];
+            string mLine = "";
 
             //Open M file and read line
             try
             {
-                mLine = File.ReadAllLines(mPath);
-                if (mLine.Length != 1)
-                {
-                    Console.WriteLine("Too many lines!");
-                    return;
-                }
+                mLine = File.ReadAllText(mPath);
                 Console.WriteLine("M file successfully opened!");
             }
             catch (Exception e)
             {
-                Console.WriteLine("The n file could not be read!");
+                Console.WriteLine("The M file could not be read!");
                 Console.WriteLine(e);
             }
 
@@ -83,7 +84,7 @@ namespace Lang
             }
 
             //Split into numbers
-            string[] mStrs = mLine[0].Split(' ');
+            string[] mStrs = mLine.Split(' ');
             int[] mNums = new int[mStrs.Length];
             //Don't do last character because it is an empty space
             for (int x = 0; x < mStrs.Length - 1; x++)
@@ -91,7 +92,6 @@ namespace Lang
                 mNums[x] = int.Parse(mStrs[x]);
             }
 
-            Console.WriteLine();
 
             string[] nStrs = nLine.Split(' ');
             int[] nNums = new int[nStrs.Length];
@@ -134,7 +134,23 @@ namespace Lang
             printArray(R, arrLength);
 
             string resultPath = Path.Combine(Environment.CurrentDirectory, "result.txt");
-
+            try
+            {
+                using(StreamWriter resStr = new StreamWriter(resultPath))
+                {
+                    for (y = 0; y < arrLength; y++)
+                    {
+                        resStr.Write(P[y].ToString() + " ");
+                    }
+                    Console.WriteLine("Wrote to result file!");
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine("Failed to write to result file!");
+                Console.WriteLine(e);
+            }
+            watch.Stop();
+            Console.WriteLine("Execution time: {0} ms", watch.ElapsedMilliseconds);
         }
     }
 }
